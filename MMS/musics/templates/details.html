@@ -1,0 +1,91 @@
+{% extends "master.html" %}
+
+{% block title %}
+Details about {{ my_musics.music_name }} by {{ my_musics.music_artist }}
+{% endblock %}
+
+{% block content %}
+<style>
+    .music-grid {
+        display: grid; /* Use CSS Grid for layout */
+        grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+        gap: 15px; /* Space between grid items */
+        padding: 20px; /* Padding around the grid */
+    }
+
+    .music-box {
+        border: 1px solid #ccc; /* Border for the music box */
+        border-radius: 8px; /* Rounded corners */
+        padding: 10px; /* Reduced padding inside the box */
+        background-color: #f9f9f9; /* Light background for the box */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        display: flex; /* Flexbox for vertical alignment */
+        flex-direction: column; /* Stack elements vertically */
+        height: 70px; /* Reduced height for smaller boxes */
+    }
+    .music-box:hover {
+        background-color: yellow;
+        transform: translateY(-5px); /* Move the box up by 5 pixels */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Increase shadow effect on hover */
+    }
+
+    .music-name {
+        font-size: 1.1em; /* Slightly smaller font size for music name */
+        font-weight: bold; /* Bold font for music name */
+        text-decoration: none; /* Remove underline from link */
+        color: #333; /* Dark text color */
+    }
+
+    .music-name:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+
+    .music-artist {
+        font-size: 0.9em; /* Slightly smaller font size for artist name */
+        color: #666; /* Gray text color */
+    }
+
+    .music-link {
+        margin-top: auto; /* Push the play button to the bottom */
+    }
+
+    .play-button {
+        text-decoration: none; /* Remove underline */
+        color: #007bff; /* Text color */
+        font-size: 1em; /* Font size */
+        margin-top: 10px; /* Space above the button */
+    }
+
+    .play-button:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+
+    .button-container {
+        margin-top: 20px; /* Space above the button container */
+    }
+
+    .button {
+        padding: 10px 15px; /* Padding for buttons */
+        background-color: #007bff; /* Button background color */
+        color: white; 
+        border-radius: 5px; /* Rounded corners for buttons */
+        display: inline-block; /* Display as block */
+    }
+
+    .button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+</style>
+
+<div class="details-container">
+    <h1>{{ my_musics.music_name }} by {{ my_musics.music_artist }}</h1>
+
+    <!-- Edit and Delete buttons -->
+    <div class="button-container">
+        <a href="{% url 'edit_music' my_musics.id %}" class="button">Edit</a>
+        <a href="{% url 'delete_music' my_musics.id %}" class="button delete-button">Delete</a>
+    </div>
+
+    <p><a href="{% url 'musics' %}" class="cancel-button">Back to Music List</a></p>
+</div>
+{% endblock %}

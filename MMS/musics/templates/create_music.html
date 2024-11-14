@@ -1,0 +1,130 @@
+{% extends "master.html" %}
+
+{% block title %}
+Add New Music
+{% endblock %}
+
+{% block content %}
+<h1>ADD NEW MUSIC</h1>
+
+<form method="POST" action="{% url 'create_music' %}">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="id_music_id">Music ID:</label>
+        <input type="text" id="id_music_id" name="music_id" value="{{ music.music_id }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="id_music_name">Music Name:</label>
+        <input type="text" id="id_music_name" name="music_name" value="{{ music.music_name }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="id_music_artist">Music Artist:</label>
+        <input type="text" id="id_music_artist" name="music_artist" value="{{ music.music_artist }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="id_music_genre">Music Genre:</label>
+        <input type="text" id="id_music_genre" name="music_genre" value="{{ music.music_genre }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="id_music_link">YouTube Music Link or Embed Code:</label>
+        <input type="text" id="id_music_link" name="music_link" value="{{ music.music_link }}"required>
+        <small>Please enter a valid YouTube URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID).</small>
+    </div>
+   
+    <div class="button-container">
+        <button type="submit" class="button save-button">Add Music</button>
+        <a href="{% url 'musics' %}" class="button cancel-button">Back to Music List</a>
+    </div>
+</form>
+
+
+<style>
+    body {
+        background-color: #f0f0f0; /* Light background for contrast */
+        font-family: 'Arial', sans-serif; /* Modern font */
+    }
+
+    h1 {
+        text-align: center; /* Center the title */
+        color: #ffffff; /* Darker text for readability */
+        margin-bottom: 20px; /* Space below the title */
+    }
+
+    .small {
+        display: flex;
+    }
+
+    .edit-form {
+        display: flex; 
+        flex-direction: column; 
+        width: 400px; /* Increased width for a more spacious layout */
+        margin: 0 auto; 
+        animation: gradient 15s ease infinite;
+    }
+
+    .form-container {
+        display: flex; 
+        flex-direction: column; 
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Increased space between elements */
+        display: flex; /* Make form groups flex containers */
+        flex-direction: column; /* Arrange label and input vertically */
+    }
+
+    label {
+        font-weight: bold; /* Bold labels for emphasis */
+        color: #000000; /* Slightly darker color for labels */
+        margin-bottom: 5px; /* Space between label and input */
+    }
+
+    input[type="text"] {
+        padding: 5px; /* Padding for input fields */
+        border: 1px solid #ccc; /* Light border */
+        border-radius: 5px; /* Rounded corners */
+        background-color: transparent; /* Clear background */
+        transition: border-color 0.3s; /* Smooth transition for border color */
+    }
+
+    input[type="text"]:focus {
+        border-color: #007bff; /* Highlight border on focus */
+        outline: none; /* Remove default outline */
+    }
+
+    .button {
+        padding: 10px 15px; 
+        background-color: #007bff; 
+        color: white; 
+        border-radius: 5px; 
+        border: none; /* Remove border */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    }
+
+    .button:hover {
+        background-color: #0056b3; 
+        transform: translateY(-2px); /* Slight lift effect on hover */
+    }
+
+    .back-link {
+        display: block; /* Block display for the link */
+        text-align: center; /* Center the link */
+        margin-top: 20px; /* Space above the link */
+        color: #007bff; /* Same color as button */
+        text-decoration: none; /* Remove underline */
+    }
+
+    .back-link:hover {
+        text-decoration: underline; /* Underline on hover for emphasis */
+    }
+</style>
+
+
+{% endblock %}
+

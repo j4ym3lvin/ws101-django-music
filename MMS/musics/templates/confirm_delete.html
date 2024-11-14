@@ -1,0 +1,74 @@
+{% extends "master.html" %}
+
+{% block title %}
+Delete Music: {{ music.music_name }}
+{% endblock %}
+
+{% block content %}
+<h1>Are you sure you want to delete?</h1>
+<h1>"{{ music.music_name }}"</h1>
+<form method="post" class="delete-form">
+    {% csrf_token %}
+    <div class="button-container">
+        <button type="submit" class="delete-button">Yes, delete it</button>
+        <a href="{% url 'musics' %}" class="cancel-button">Cancel</a>
+    </div>
+</form>
+
+<style>
+
+    h1 {
+        text-align: center; /* Center the title */
+        color: #ffffff; /* Darker text for readability */
+        margin-bottom: 20px; /* Space below the title */
+    }
+
+    .delete-form {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; /* Center items horizontally */
+        width: 400px; /* Fixed width for the form */
+        margin: 0 auto; 
+        padding: 20px; /* Padding for the form */
+
+    }
+
+    .button-container {
+        display: flex; /* Flexbox for button alignment */
+        justify-content: space-between; /* Space between buttons */
+        width: 50%; /* Full width for the container */
+    }
+
+    .delete-button, .cancel-button {
+        padding: 10px 15px; /* Padding for buttons */
+        border-radius: 5px; /* Rounded corners */
+        text-align: center; /* Center text in buttons */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+        text-decoration: none; /* Remove underline from link */
+    }
+
+    .delete-button {
+        background-color: #d9534f; /* Red background for delete button */
+        color: white; /* White text */
+        border: none; /* Remove border */
+    }
+
+    .delete-button:hover {
+        background-color: #c9302c; /* Darker red on hover */
+        transform: translateY(-2px); /* Slight lift effect on hover */
+    }
+
+    .cancel-button {
+        background-color: #5bc0de; /* Light blue background for cancel button */
+        color: white; /* White text */
+        border: none; /* Remove border */
+    }
+
+    .cancel-button:hover {
+        background-color: #31b0d5; /* Darker blue on hover */
+        transform: translateY(-2px); /* Slight lift effect on hover */
+    }
+</style>
+
+{% endblock %}
